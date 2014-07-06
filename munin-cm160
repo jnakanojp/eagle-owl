@@ -1,0 +1,31 @@
+#!/bin/sh
+
+#%# family=auto
+#%# capabilities=autoconf
+
+GETWATT=`cat /home/jnakano/work/eagle-owl/.live | cut -d' ' -f4`
+
+if [ "$1" = "autoconf" ]; then
+        if [ -n ${GETWATT} ] ; then
+                echo yes
+                exit 0
+        else
+                echo no
+                exit 0
+        fi
+fi
+
+if [ "$1" = "config" ]; then
+        echo 'graph_title home power consumption'
+        echo 'graph_args --lower-limit 0'
+        echo 'graph_scale no'
+        echo 'graph_vlabel kW'
+        echo 'graph_category sensors'
+        echo 'power.label consumed power'
+        echo 'power.min 0'
+        echo 'power.draw LINE2'
+        echo 'power.type GAUGE'
+        exit 0
+fi
+
+echo "power.value $GETWATT"

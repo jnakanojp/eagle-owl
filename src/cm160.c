@@ -82,7 +82,8 @@ static void process_live_data(struct record_data *rec)
 
 static void decode_frame(unsigned char *frame, struct record_data *rec)
 {
-  int volt = 230; // TODO: use the value from energy_param table (supply_voltage)
+  printf("%02x%02x %02x%02x %02x%02x %02x%02x %02x%02x %02x\n", frame[0], frame[1], frame[2], frame[3], frame[4], frame[5], frame[6], frame[7], frame[8], frame[9], frame[10]);
+  int volt = 100; // TODO: use the value from energy_param table (supply_voltage)
   rec->addr = 0; // TODO: don't use an harcoded addr value for the device...
   rec->year = frame[1]+2000;
   rec->month = frame[2];

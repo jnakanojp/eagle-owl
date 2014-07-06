@@ -1,0 +1,26 @@
+#!/bin/sh
+# chkconfig: 2345 89 11
+# description: CM160 server
+
+. /etc/eagleowl.conf
+
+test -x $install_path/cm160 || exit 0
+
+case "$1" in
+start)
+cd $install_path
+$install_path/cm160 -d
+;;
+stop)
+killall cm160
+;;
+restart)
+killall cm160
+sleep 1
+$install_path/cm160 -d
+;;
+*)
+echo "Usage: $0 {start|stop|restart}"
+exit 1
+esac
+exit 0
