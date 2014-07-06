@@ -8,7 +8,7 @@ test -x $install_path/cm160 || exit 0
 
 case "$1" in
 start)
-cd $install_path
+cd $work_dir
 $install_path/cm160 -d
 ;;
 stop)
@@ -17,6 +17,7 @@ killall cm160
 restart)
 killall cm160
 sleep 1
+cd $work_dir
 $install_path/cm160 -d
 ;;
 *)

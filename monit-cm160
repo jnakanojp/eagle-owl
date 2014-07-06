@@ -1,0 +1,5 @@
+check file live with path /etc/eagle-owl/.live
+    start program = "/etc/init.d/cm160 start"
+    stop program = "/etc/init.d/cm160 stop"
+    if size < 5 B then restart
+    if timestamp > 10 minutes then restart
