@@ -1,0 +1,13 @@
+[Unit]
+Description=Eagle-owl.
+After=systemd-udevd.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/cm160
+Restart=always
+WorkingDirectory=/etc/eagleowl
+StandardOutput=null
+
+[Install]
+WantedBy=multi-user.target
